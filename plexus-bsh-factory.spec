@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.0
-Release:        0.14.a7.11%{?dist}
+Release:        0.14.a7.12%{?dist}
 Epoch:          0
 Summary:        Plexus Bsh component factory
 License:        MIT
@@ -22,10 +22,10 @@ Patch1:         %{pkg_name}-encodingfix.patch
 Patch2:         0001-Migrate-to-plexus-containers-container-default.patch
 
 BuildRequires:  %{?scl_prefix_java_common}maven-local
-BuildRequires:  maven30-mvn(bsh:bsh)
-BuildRequires:  maven30-mvn(classworlds:classworlds)
-BuildRequires:  maven30-mvn(org.codehaus.plexus:plexus-container-default)
-BuildRequires:  maven30-mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  %{?scl_prefix}mvn(bsh:bsh)
+BuildRequires:  %{?scl_prefix}mvn(classworlds:classworlds)
+BuildRequires:  %{?scl_prefix}mvn(org.codehaus.plexus:plexus-container-default)
+BuildRequires:  %{?scl_prefix}mvn(org.codehaus.plexus:plexus-utils)
 
 %description
 Bsh component class creator for Plexus.
@@ -38,7 +38,7 @@ Javadoc for %{pkg_name}.
 
 %prep
 %setup -q -n %{pkg_name}
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 
 %patch1 -b .sav
@@ -48,14 +48,14 @@ cp -p %{SOURCE3} .
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_file  : %{parent}/%{subname}
 %mvn_build -f
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -69,6 +69,9 @@ set -e -x
 %doc plexus-bsh-factory-license.txt
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 0:1.0-0.14.a7.12
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 0:1.0-0.14.a7.11
 - maven33 rebuild
 
