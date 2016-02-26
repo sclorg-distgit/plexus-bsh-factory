@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.0
-Release:        0.14.a7.12%{?dist}
+Release:        0.14.a7.13%{?dist}
 Epoch:          0
 Summary:        Plexus Bsh component factory
 License:        MIT
@@ -21,7 +21,7 @@ Source3:	plexus-bsh-factory-license.txt
 Patch1:         %{pkg_name}-encodingfix.patch
 Patch2:         0001-Migrate-to-plexus-containers-container-default.patch
 
-BuildRequires:  %{?scl_prefix_java_common}maven-local
+BuildRequires:  %{?scl_prefix}maven-local
 BuildRequires:  %{?scl_prefix}mvn(bsh:bsh)
 BuildRequires:  %{?scl_prefix}mvn(classworlds:classworlds)
 BuildRequires:  %{?scl_prefix}mvn(org.codehaus.plexus:plexus-container-default)
@@ -69,6 +69,9 @@ set -e -x
 %doc plexus-bsh-factory-license.txt
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 0:1.0-0.14.a7.13
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 0:1.0-0.14.a7.12
 - maven33 rebuild #2
 
