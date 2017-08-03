@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}%{parent}-%{subname}
 Version:        1.0
-Release:        0.17.a7.1%{?dist}
+Release:        0.17.a7.2%{?dist}
 Epoch:          0
 Summary:        Plexus Bsh component factory
 License:        MIT
@@ -57,6 +57,9 @@ cp -p %{SOURCE3} .
 %doc plexus-bsh-factory-license.txt
 
 %changelog
+* Thu Jun 22 2017 Michael Simacek <msimacek@redhat.com> - 0:1.0-0.17.a7.2
+- Mass rebuild 2017-06-22
+
 * Wed Jun 21 2017 Java Maintainers <java-maint@redhat.com> - 0:1.0-0.17.a7.1
 - Automated package import and SCL-ization
 
